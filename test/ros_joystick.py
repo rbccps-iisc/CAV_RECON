@@ -4,7 +4,14 @@ from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
 
 import serial
-ser = serial.Serial('COM16')
+from sys import platform
+if platform == "linux" or platform == "linux2":
+    ser = serial.Serial('/dev/ttyACM0')
+elif platform == "darwin":
+    pass
+elif platform == "win32":
+    # Windows...
+    ser = serial.Serial('COM16')
 
 # Receives joystick messages (subscribed to Joy topic)
 # then converts the joysick inputs into Twist commands
