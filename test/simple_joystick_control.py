@@ -34,6 +34,7 @@ def remote():
         }
         for event in pygame.event.get():  # User did something.
             if event.type == pygame.JOYAXISMOTION:
+                print ("detect", pygame.JOYAXISMOTION)
                 axis1 = pygame.joystick.Joystick(0).get_axis(1)
                 axis3 = pygame.joystick.Joystick(0).get_axis(3)
                 if (axis1 > 0.1):
@@ -41,17 +42,22 @@ def remote():
                     print(bval)
                     out_json["break"]=bval
                     out_json["modified"]=True
+                    print("Brake")
+                    #print out_json
                 elif (axis1 < -0.1 and axis3 < 0.1):
                     tval = int((axis1 * -1 + axis3 * -1) * (peak_throttle - base_throttle) * 0.5 + base_throttle)
                     if (abs(tval - oldvar) > 5):
                         print(tval)
                         out_json["throttle"]=tval
                         out_json["modified"] = True
+                        #print out_json
+                        print("Throttle")
                     oldvar=tval
                 elif(axis1>-0.1 and axis1<0.1):
-                    print("Zeron Throttle")
+                    print("Zero Throttle")
                     out_json["throttle"] = 0
                     out_json["modified"] = True
+                    #print out_json
                 print (axis1)
                 print (axis3)
             if event.type == pygame.JOYBUTTONDOWN:
@@ -82,7 +88,7 @@ def remote():
                     out_json["modified"] = True
                 print("Joystick button released.")
 
-        return out_json
+        #print out_json
 
 if __name__ == '__main__':
     remote()
