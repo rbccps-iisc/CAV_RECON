@@ -3,6 +3,9 @@ import rospy
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Joy
 
+import serial
+ser = serial.Serial('COM16')
+
 # Receives joystick messages (subscribed to Joy topic)
 # then converts the joysick inputs into Twist commands
 # axis 1 aka left stick vertical controls linear speed
@@ -38,40 +41,40 @@ def callback(data):
 
     if axis1 > 0.1:
         bval = int((axis1) * (peak_brake - base_brake) + base_brake)
-        #print(bval)
-        # ser.write(str(bval).encode('utf-8'))
-        # ser.write("a".encode('utf-8'))
+        print(bval)
+        ser.write(str(bval).encode('utf-8'))
+        ser.write("a".encode('utf-8'))
         #### ser.write("4000a".encode('utf-8')) #throttle released on braking
         print("Brake")
     elif (axis1 < -0.1 and axis1 < 0.1):
         tval = int((axis1 * -1 + axis3 * -1) * (peak_throttle - base_throttle) * 0.5 + base_throttle)
         if (abs(tval - oldvar) > 5):
             #print(tval)
-            # ser.write(str(tval).encode('utf-8'))
-            # ser.write("a".encode('utf-8'))
-            # ser.write("450a".encode('utf-8'))  # brake released on acceleration
+            ser.write(str(tval).encode('utf-8'))
+            ser.write("a".encode('utf-8'))
+            ser.write("450a".encode('utf-8'))  # brake released on acceleration
             print("Throttle")
         oldvar = tval
     elif (axis1 > -0.1 and axis1 < 0.1):
-        # ser.write("4000a".encode('utf-8'))
-        # ser.write("450a".encode('utf-8'))  # brake released
+        ser.write("4000a".encode('utf-8'))
+        ser.write("450a".encode('utf-8'))  # brake released
         print("Zero Throttle")
     print (axis1)
     print (axis3)
 
     if button1 == 1:
         print("Emergency Brake")
-        # ser.write("4600a".encode('utf-8'))  # throttle released
-        # ser.write("600a".encode('utf-8'))  # brake engaged
+        ser.write("4600a".encode('utf-8'))  # throttle released
+        ser.write("600a".encode('utf-8'))  # brake engaged
 
     if (button4 and button5 == 0):
         if (first_a == 0):
-            # ser.write("1000a".encode('utf-8'))
+            ser.write("1000a".encode('utf-8'))
             print("Joystick button 4 pressed.")
             first_a = 1
     if (button5 and button4 == 0):
         if (first_d == 0):
-            # ser.write("2000a".encode('utf-8'))
+            ser.write("2000a".encode('utf-8'))
             print("Joystick button 5 pressed.")
             first_d = 1
 
@@ -80,7 +83,7 @@ def callback(data):
             first_a = 0
         if(button5 == 0):
             first_d = 0
-        #ser.write("3000a".encode('utf-8'))
+        ser.write("3000a".encode('utf-8'))
         print("Joystick button released.")
     button = button_
 
