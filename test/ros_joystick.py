@@ -53,7 +53,7 @@ def callback(data):
         ser.write("a".encode('utf-8'))
         #### ser.write("4000a".encode('utf-8')) #throttle released on braking
         print("Brake")
-    elif (axis1 < -0.1 and axis1 < 0.1):
+    elif (axis1 < -0.1 and axis3 < 0.1):
         tval = int((axis1 * -1 + axis3 * -1) * (peak_throttle - base_throttle) * 0.5 + base_throttle)
         if (abs(tval - oldvar) > 5):
             #print(tval)
