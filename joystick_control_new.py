@@ -15,7 +15,7 @@ bval = 0
 pygame.display.init()
 pygame.joystick.init()
 pygame.joystick.Joystick(0).init()
-ser = serial.Serial('COM6')
+ser = serial.Serial('/dev/ttyUSB0')
 
 
 def talker():

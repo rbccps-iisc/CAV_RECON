@@ -20,7 +20,7 @@ pygame.joystick.Joystick(0).init()
 #ser = serial.Serial('COM6')
 s = socket.socket()
 
-HOST = '10.0.0.3'
+HOST = '10.0.0.2'
 PORT = 12345
 
 SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -59,10 +59,10 @@ def talker():
                         target = "320B"
                     if target != oldtarget:
                         #ser.write(target.encode('utf-8'))
-                        t1 = datetime.datetime.now()
+                        #t1 = datetime.datetime.now()
                         SOCK.sendall(target.encode('utf-8'))
-                        date = SOCK.recv(1024)
-                        print (date)
+                        #date = SOCK.recv(1024)
+                        #print (date)
                         oldtarget = target
                         print(target)
                 elif axis1 < -0.1 and axis3 < 0.1:
