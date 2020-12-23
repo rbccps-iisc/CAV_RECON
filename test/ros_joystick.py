@@ -14,7 +14,7 @@ elif platform == "win32":
     ser = serial.Serial('COM16')
 
 # Receives joystick messages (subscribed to Joy topic)
-# then converts the joysick inputs into Twist commands
+# then converts the joystick inputs into Twist commands
 # axis 1 aka left stick vertical controls linear speed
 # axis 0 aka left stick horizonal controls angular speed
 oldvar = 0
