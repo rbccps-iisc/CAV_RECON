@@ -5,8 +5,9 @@ from sensor_msgs.msg import Joy
 
 import serial
 from sys import platform
+
 if platform == "linux" or platform == "linux2":
-    ser = serial.Serial('/dev/ttyACM0')
+    ser = serial.Serial('/dev/ttyUSB0')
 elif platform == "darwin":
     pass
 elif platform == "win32":
@@ -36,8 +37,8 @@ def callback(data):
     global bval
     global button
 
-    axis1 = -data.axes[1]
-    axis3 = -data.axes[4]  # in logitech axis 3 is axis 4 confirm with ashish
+    axis1 = data.axes[1]
+    axis3 = data.axes[3]  # in logitech axis 3 is axis 4 confirm with ashish
 
     button1 = data.buttons[1]
     button4 = data.buttons[4]
@@ -63,6 +64,7 @@ def callback(data):
             target = "320B"
         if target != oldtarget:
             ser.write(target.encode('utf-8'))
+            print(target.encode('utf-8'))
             # t1 = datetime.datetime.now()
             oldtarget = target
             print(target)
@@ -106,27 +108,33 @@ def callback(data):
             target = "160T"
         if target != oldtarget:
             ser.write(target.encode('utf-8'))
-
+            print(target.encode('utf-8'))
             ser.write("0T".encode('utf-8'))
+            print("0T".encode('utf-8'))
             oldtarget = target
             print(target)
     elif -0.1 < axis1 < 0.1:
         print("Zero Throttle")
         ser.write("200B".encode('utf-8'))
         ser.write("0T".encode('utf-8'))
-
+        print("200B".encode('utf-8'))
+        print("0T".encode('utf-8'))
     if button1 == 1:
         print("Emergency Brake")
         ser.write("320B".encode('utf-8'))
         ser.write("0T".encode('utf-8'))
+        print("320B".encode('utf-8'))
+        print("0T".encode('utf-8'))
     if (button4 and button5 == 0):
         if (first_d == 0):
             ser.write("1000S".encode('utf-8'))
+            print("1000S".encode('utf-8'))
             print("Joystick button 4 pressed.")
             first_a = 1
     if (button5 and button4 == 0):
         if (first_d == 0):
             ser.write("2000S".encode('utf-8'))
+            print("2000S".encode('utf-8'))
             print("Joystick button 5 pressed.")
             first_d = 1
 
@@ -136,6 +144,7 @@ def callback(data):
         if(button5 == 0):
             first_d = 0
         ser.write("3000a".encode('utf-8'))
+        print("3000a".encode('utf-8'))
         print("Joystick button released.")
     button = button_
 
@@ -144,5 +153,8 @@ def callback(data):
 def start():
     rospy.Subscriber("joy", Joy, callback)
     # starts the node
-    rospy.init_node('Joy2Vehicle')
+    rospy.init_node('Joy2Turtle')
     rospy.spin()
+
+if __name__ == '__main__':
+    start()
