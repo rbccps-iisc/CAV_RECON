@@ -12,11 +12,18 @@ elif platform == "darwin":
 elif platform == "win32":
     # Windows...
     ser = serial.Serial('COM16')
+"""
+In this test code we are testing basic vehicle control over the network
+we use ROS middleware to send the control commands 
+This script runs at the remote driver end. 
+Receives joystick messages (subscribed to Joy topic)
+then converts the joystick inputs into commands
 
-# Receives joystick messages (subscribed to Joy topic)
-# then converts the joystick inputs into Twist commands
-# axis 1 aka left stick vertical controls linear speed
-# axis 0 aka left stick horizonal controls angular speed
+WE ARE NOT USING THIS METHOD NOW 
+--- WE HAVE SEPERATED OUT ALL THE STREAMS FROM THE JOYSTICK
+
+"""
+
 oldvar = 0
 first_a = 0
 first_d = 0
@@ -39,7 +46,7 @@ def callback(data):
     global button
     # print data
     axis1 = -data.axes[1]
-    axis3 = -data.axes[4]  # in logitech axis 3 is axis 4 confirm with ashish
+    axis3 = -data.axes[3]  # in logitech axis 3 is axis 4 confirm with ashish
     button1 = data.buttons[1]
     button4 = data.buttons[4]
     button5 = data.buttons[5]

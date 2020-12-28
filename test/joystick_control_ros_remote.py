@@ -4,6 +4,15 @@ import serial
 import rospy
 from std_msgs.msg import String
 
+"""
+In this test code we are testing basic vehicle control over the network
+we use ROS middleware to send the control commands 
+This script runs at the remote driver end. 
+Receives joystick messages and publish to topics, 
+1. steering
+2. break
+3. throttle 
+"""
 
 oldvar = 0
 first_a = 0

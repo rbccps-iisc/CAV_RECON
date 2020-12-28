@@ -13,6 +13,12 @@ elif platform == "win32":
 HOST = '10.0.0.2'  # Standard loopback interface address (localhost)
 PORT = 12345        # Port to listen on (non-privileged ports are > 1023)
 
+"""
+In this test code we are testing basic vehicle control over the network
+we use barebone sockets to send the control commands 
+This script runs at the on-board vehicle computer. 
+"""
+
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen()
