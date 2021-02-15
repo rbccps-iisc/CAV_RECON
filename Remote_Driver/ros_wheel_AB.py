@@ -1,6 +1,4 @@
 import pygame
-import time
-import serial
 import rospy
 from std_msgs.msg import String
 
@@ -21,8 +19,6 @@ Logitech wheel button 6 = Emergency Brake
 """
 
 oldvar = 0
-first_a = 0
-first_d = 0
 target = ""
 oldtarget = ""
 base_throttle = 5500
@@ -39,8 +35,7 @@ calib_throttle = True
 calib_brake = True
 
 def talker():
-    global first_a, target, oldtarget
-    global first_d
+    global target, oldtarget
     global oldvar
     global base_throttle
     global peak_throttle
@@ -52,12 +47,10 @@ def talker():
 
     pub_break = rospy.Publisher('break', String, queue_size=10)
     pub_throttle = rospy.Publisher('throttle', String, queue_size=10)
-    pub_steering = rospy.Publisher("steering", String, queue_size=10)
     rospy.init_node('vehicle', anonymous=True)
     while not rospy.is_shutdown():
         for event in pygame.event.get():  # User did something.
             if event.type == pygame.JOYAXISMOTION:
-                steer = pygame.joystick.Joystick(0).get_axis(0)
                 accel = pygame.joystick.Joystick(0).get_axis(2)
                 brake = pygame.joystick.Joystick(0).get_axis(3)
 
@@ -71,7 +64,7 @@ def talker():
                         print("THANK YOU!, WE ARE READY TO DRIVE")
 
                 else:
-                    print("Steer: {}	Brake: {}	Accel: {}".format(steer, brake, accel))
+                    print("Brake: {}	Accel: {}".format(brake, accel))
                     if brake < 0.95:
                         bval = brake
                         if 0.95 > bval > 0.714:
@@ -140,25 +133,6 @@ def talker():
                             pub_throttle.publish(target.encode('utf-8'))
                             oldtarget = target
                             print(target)
-
-                    elif steer > 0.040:
-                        if first_d == 0:
-                            pub_steering.publish("2000S".encode('utf-8'))
-                            print("2000S")
-                            first_d = 1
-                    elif steer < -0.040:
-                        if first_a == 0:
-                            pub_steering.publish("1000S".encode('utf-8'))
-                            print("1000S")
-                            first_a = 1
-                    elif -0.040 < steer < -0.020:
-                        pub_steering.publish("3000S".encode('utf-8'))
-                        print("3000S")
-                        first_a = 0
-                    elif 0.020 < steer < 0.040:
-                        pub_steering.publish("3000S".encode('utf-8'))
-                        print("3000S")
-                        first_d = 0
 
                     elif 0.97 < accel < 0.95:
                         print("Zero Throttle")

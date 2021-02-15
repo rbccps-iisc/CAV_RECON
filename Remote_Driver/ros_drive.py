@@ -44,10 +44,23 @@ def talker():
     pub_break = rospy.Publisher('break',String, queue_size=10)
     pub_throttle = rospy.Publisher('throttle',String, queue_size=10)
     pub_steering = rospy.Publisher("steering",String, queue_size=10)
+    pub_heartbeat = rospy.Publisher("HeartBeat",String, queue_size=10)
     rospy.init_node('vehicle', anonymous=True)
+    start_time = time.time()
+    eStop = False
+
     while not rospy.is_shutdown():
         for event in pygame.event.get():  # User did something.
+            # Heart beat, must've better implementation for this
+            if (time.time() - start_time < 10.0) and eStop:
+                # target = "H"
+                pub_heartbeat.publish(target.encode('utf-8'))
+            else:
+                target = "N"
+                pub_heartbeat.publish(target.encode('utf-8'))
+
             if event.type == pygame.JOYAXISMOTION:
+                eStop = True
                 axis1 = pygame.joystick.Joystick(0).get_axis(1)
                 axis3 = pygame.joystick.Joystick(0).get_axis(3)
                 if axis1 > 0.1:
@@ -104,11 +117,11 @@ def talker():
                     elif 1.5 < tval < 1.6:
                         target = "140T"
                     elif 1.6 < tval < 1.7:
-                        target = "140T"
+                        target = "150T"
                     elif 1.7 < tval < 1.8:
-                        target = "140T"
+                        target = "160T"
                     elif 1.9 < tval < 2:
-                        target = "140T"
+                        target = "170T"
                     if target != oldtarget:
                         #ser.write(target.encode('utf-8'))
                         #qser.write("0T".encode('utf-8'))
@@ -122,6 +135,7 @@ def talker():
                     pub_break.publish("200B".encode('utf-8'))
                     pub_throttle.publish("0T".encode('utf-8'))
             if event.type == pygame.JOYBUTTONDOWN:
+
                 if pygame.joystick.Joystick(0).get_button(1):
                     print("Emergency Brake")
                     #ser.write("320B".encode('utf-8'))
