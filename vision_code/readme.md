@@ -29,9 +29,9 @@ Sample video link - https://drive.google.com/file/d/1XUdNRgPARt_f1JexmaApF2gWRvN
 
 **Repositories referred-**
 
-1.Darknet- alexyAB  - https://github.com/AlexeyAB/darknet
-3.Shelfnet  - https://github.com/juntang-zhuang/ShelfNet
-5.Bisenet  - https://github.com/CoinCheung/BiSeNet
+1.Darknet- alexyAB  - https://github.com/AlexeyAB/darknet  
+2.Shelfnet  - https://github.com/juntang-zhuang/ShelfNet  
+3.Bisenet  - https://github.com/CoinCheung/BiSeNet  
 
 
 
