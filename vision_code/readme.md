@@ -24,11 +24,14 @@ Object detection - https://drive.google.com/file/d/1NJ2FfGzhOCx-IXJu9VyKz6a2MN3K
 
 Segmentation - https://drive.google.com/file/d/1dCIFkrJYRv_diVD3q7uxazlu-CJv1tif/view?usp=sharing
 
+Sample video link - https://drive.google.com/file/d/1XUdNRgPARt_f1JexmaApF2gWRvNzsp2i/view?usp=sharing
+
+
 **Repositories referred-**
 
-1.Darknet- alexyAB  
-2.Shelfnet  
-3.Bisenet  
+1.Darknet- alexyAB  - https://github.com/AlexeyAB/darknet
+3.Shelfnet  - https://github.com/juntang-zhuang/ShelfNet
+5.Bisenet  - https://github.com/CoinCheung/BiSeNet
 
 
 
