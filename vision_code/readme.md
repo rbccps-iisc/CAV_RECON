@@ -9,11 +9,11 @@ This is the vision code pipeline,works as follows-
 
 It can also be configured(using config.ini) to run only one of the two models.A config.ini file has some parameters to be set for the pipeline to work.
 
-Usage 
+**Usage** 
 
 python3 homo_objnew.py
 
-Dependencies-
+**Dependencies-**
 Torch>1.2.0  
 cuda=10.2  
 cudnn=7.6  
