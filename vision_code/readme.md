@@ -1,5 +1,4 @@
-
-This is the vision code pipeline,works as follows-
+**This is the vision code pipeline,works as follows-**
 
 1.Capture the frame  
 2.Run road segmentation  
@@ -13,7 +12,7 @@ It can also be configured(using config.ini) to run only one of the two models.A 
 
 python3 homo_objnew.py
 
-**Dependencies-**
+**Dependencies-**  
 Torch>1.2.0  
 cuda=10.2  
 cudnn=7.6  
@@ -25,7 +24,7 @@ Object detection - https://drive.google.com/file/d/1NJ2FfGzhOCx-IXJu9VyKz6a2MN3K
 
 Segmentation - https://drive.google.com/file/d/1dCIFkrJYRv_diVD3q7uxazlu-CJv1tif/view?usp=sharing
 
-Repositories referred-
+**Repositories referred-**
 
 1.Darknet- alexyAB  
 2.Shelfnet  
