@@ -18,7 +18,10 @@ cuda=10.2
 cudnn=7.6  
 python-opencv-4.5  
 numpy  
-TensorRT= 7.1.3
+tqdm  
+ninja  
+TensorRT= 7.1.3  
+torchvision=0.8.2  
 
 The code is tested on gtx 1060.The weights can be dwonloaded from this link-  
 Object detection - https://drive.google.com/file/d/18Yq550ggUbnDMg7O40lI1LvAYUsyUtep/view?usp=sharing  
@@ -28,10 +31,11 @@ Segmentation - https://drive.google.com/file/d/1RbF8TvPeNld1oURIQtKd1ORK6b1b9DIX
 
 Sample video link -https://drive.google.com/file/d/1ldeuFCHQ1VVGGs0AzYdygu_Gv_cDvd7a/view?usp=sharing
 
-Note- The tensorRT model needs to built on the specific system on which it will be used.
+Note-1) The tensorRT model needs to built on the specific system on which it will be used.  
+
 **Repositories referred-**
 
-1.Darknet- alexyAB  - https://github.com/AlexeyAB/darknet  (version- 64efa721ede91cd8ccc18257f98eeba43b73a6af )
+1.Darknet- alexyAB  - https://github.com/AlexeyAB/darknet  (version- 64efa721ede91cd8ccc18257f98eeba43b73a6af )  
 2.Shelfnet  - https://github.com/juntang-zhuang/ShelfNet  
 3.Bisenet  - https://github.com/CoinCheung/BiSeNet  
 4.TKdnn-  https://github.com/ioir123ju/tkDNN
