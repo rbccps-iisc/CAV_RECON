@@ -32,6 +32,9 @@ Segmentation - https://drive.google.com/file/d/1RbF8TvPeNld1oURIQtKd1ORK6b1b9DIX
 Sample video link -https://drive.google.com/file/d/1ldeuFCHQ1VVGGs0AzYdygu_Gv_cDvd7a/view?usp=sharing
 
 Note-1) The tensorRT model needs to built on the specific system on which it will be used.  
+     2)The segment_folders is same as version1 code but only the files which are different have been uploaded in segment_folders under this version2.
+     3)The tensorrt model to be built requires this yolov4 folder-  to be placed in build folder of tkdnn and then the commands to build the trt model can be followed from tkdnn github.
+     4)Before making the trt model,replace the /tkDNN/tests/darknet/cfg/yolo4.cfg with the cfg file provided in files folder in this repo.Also replace the /tkDNN/tests/darknet/names/coco.names with the coco.names provided in the files folder in this repo.
 
 **Repositories referred-**
 
