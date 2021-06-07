@@ -13,15 +13,11 @@ It can also be configured(using config.ini) to run only one of the two models.A 
 python3 homo_objnew.py
 
 **Dependencies-**  
-Torch>1.2.0  
+  
 cuda=10.2  
 cudnn=7.6  
-python-opencv-4.5  
-numpy  
-tqdm  
-ninja  
 TensorRT= 7.1.3  
-torchvision=0.8.2  
+
 
 The code is tested on gtx 1060.The weights can be dwonloaded from this link-  
 Object detection - https://drive.google.com/file/d/18Yq550ggUbnDMg7O40lI1LvAYUsyUtep/view?usp=sharing  
@@ -31,7 +27,8 @@ Segmentation - https://drive.google.com/file/d/1RbF8TvPeNld1oURIQtKd1ORK6b1b9DIX
 
 Sample video link -https://drive.google.com/file/d/1ldeuFCHQ1VVGGs0AzYdygu_Gv_cDvd7a/view?usp=sharing
 
-Note-1) The tensorRT model needs to built on the specific system on which it will be used.  
+Note-  
+     1) The tensorRT model needs to built on the specific system on which it will be used.  
      2)The segment_folders is same as version1 code but only the files which are different have been uploaded in segment_folders under this version2.  
      3)The tensorrt model to be built requires this yolov4 folder- https://drive.google.com/drive/folders/1SqFXIO8qlUIZCgwRybNfAQUIcwdszp1o?usp=sharing  to be placed in build folder of tkdnn and then the commands to build the trt model can be followed from tkdnn github.  
      4)Before making the trt model,replace the /tkDNN/tests/darknet/cfg/yolo4.cfg with the cfg file provided in files folder in this repo.Also replace the /tkDNN/tests/darknet/names/coco.names with the coco.names provided in the files folder in this repo.
