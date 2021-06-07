@@ -13,7 +13,8 @@ It can also be configured(using config.ini) to run only one of the two models.A 
 python3 homo_objnew.py
 
 **Dependencies-**  
-  
+
+pip3 -r install requirements.txt  
 cuda=10.2  
 cudnn=7.6  
 TensorRT= 7.1.3  
