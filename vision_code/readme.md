@@ -11,5 +11,5 @@ The main difference between the different folders is as listed below -
 A docker container of version1 and version2 is uploaded - https://drive.google.com/file/d/10GQhyWgAsETzWwjTvhj2L-PcJzLru43p/view?usp=sharing  
 Readme to use docker - https://drive.google.com/file/d/1JDOXcS9XxpJs1z-8iQ_rFvdCPHkyxgsk/view?usp=sharing  
 
-The details of the models used in different versions is briefly summarized here- https://drive.google.com/file/d/1zFMCxbc7GfWz1ctPqgTKTd4Z7JXe3Vs1/view?usp=sharing
+**The details of the models used in different versions is briefly summarized here**- https://drive.google.com/file/d/1zFMCxbc7GfWz1ctPqgTKTd4Z7JXe3Vs1/view?usp=sharing
 
