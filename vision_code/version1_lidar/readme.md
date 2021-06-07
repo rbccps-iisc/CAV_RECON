@@ -14,20 +14,11 @@ The entire pipeline(comprising of object detection,lidar based distance estimati
 python3 homo_objnew_lidar_live.py <br />
 
 **Dependencies-** <br />
-Torch= 1.7.1 <br />
-torchvision =0.8.2
+pip3 install -r requirements.txt  
+The setup works with-
 cuda=10.2 <br />
 cudnn=7.6 <br />
-python-opencv-4.5 <br />
-numpy <br />
-numba <br />
-scikit-image <br />
-natsort <br />
-pyyaml <br />
-pycryptodomex <br />
-gnupg
-tqdm
-ninja
+
 
 **Case2-if ROS=1 in config.ini**
 
