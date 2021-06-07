@@ -22,23 +22,26 @@ cudnn=7.6 <br />
 
 **Case2-if ROS=1 in config.ini**
 
-These steps are valid for a python3-virtual environment. <br />
 1.Install ros-melodic from the official wiki page.(no need to build catkin_ws) <br />
-2.Follow the below instructions in virtual environment.These are only done so that the code works with python3-ros <br />
+2.Create a python3 virtual environment.
+The below steps are valid for a python3-virtual environment. <br />
+3.Follow the below instructions in virtual environment.These are only done so that the code works with python3-ros.All this is done inside the virtual environment.Put the below commands one by one in the terminal  
 
+pip3 install netifaces <br />
+pip3 install rospkg <br />
 source /opt/ros/melodic/setup.bash  
 sudo apt install python3-catkin-pkg-modules python3-rospkg-modules python3-empy <br />
 mkdir -p ~/catkin_ws/src; cd ~/catkin_ws <br />
 catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3 <br />
 source devel/setup.bash <br />
+
 wstool init <br />
 wstool set -y src/geometry2 --git https://github.com/ros/geometry2 -v 0.6.5 <br />
 wstool up <br />
 rosdep install --from-paths src --ignore-src -y -r <br />
+
 catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so <br />
 source ./devel/setup.bash <br />
-pip3 install netifaces <br />
-pip3 install rospkg <br />
 
 followed all instructions from this link https://answers.ros.org/question/326226/importerror-dynamic-module-does-not-define-module-export-function-pyinit__tf2/
 
