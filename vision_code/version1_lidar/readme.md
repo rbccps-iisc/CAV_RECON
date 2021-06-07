@@ -1,5 +1,5 @@
 
-This is the vision code pipeline,works as follows-
+**This is the vision code pipeline,works as follows-**
 
 1.Capture the frame
 2.Run object detection
