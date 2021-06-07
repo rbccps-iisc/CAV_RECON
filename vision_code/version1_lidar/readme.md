@@ -14,34 +14,40 @@ The entire pipeline(comprising of object detection,lidar based distance estimati
 python3 homo_objnew_lidar_live.py <br />
 
 **Dependencies-** <br />
-Torch>1.2.0 <br />
+Torch= 1.7.1 <br />
+torchvision =0.8.2
 cuda=10.2 <br />
 cudnn=7.6 <br />
 python-opencv-4.5 <br />
 numpy <br />
 numba <br />
+scikit-image <br />
+natsort <br />
+pyyaml <br />
+pycryptodomex <br />
+gnupg
+tqdm
+ninja
 
 **Case2-if ROS=1 in config.ini**
 
 These steps are valid for a python3-virtual environment. <br />
 1.Install ros-melodic from the official wiki page.(no need to build catkin_ws) <br />
-2.sudo apt install python3-catkin-pkg-modules python3-rospkg-modules python3-empy <br />
-3.Follow the below instructions in virtual environment.These are only done so that the code works with python3-ros <br />
+2.Follow the below instructions in virtual environment.These are only done so that the code works with python3-ros <br />
 
+source /opt/ros/melodic/setup.bash  
+sudo apt install python3-catkin-pkg-modules python3-rospkg-modules python3-empy <br />
 mkdir -p ~/catkin_ws/src; cd ~/catkin_ws <br />
-catkin_make <br />
+catkin_make -DPYTHON_EXECUTABLE=/usr/bin/python3 <br />
 source devel/setup.bash <br />
 wstool init <br />
 wstool set -y src/geometry2 --git https://github.com/ros/geometry2 -v 0.6.5 <br />
 wstool up <br />
 rosdep install --from-paths src --ignore-src -y -r <br />
-catkin_make --cmake-args 
-            -DCMAKE_BUILD_TYPE=Release  
-            -DPYTHON_EXECUTABLE=/usr/bin/python3   
-            -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m 
-            -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so <br />
+catkin_make --cmake-args -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=/usr/bin/python3 -DPYTHON_INCLUDE_DIR=/usr/include/python3.6m -DPYTHON_LIBRARY=/usr/lib/x86_64-linux-gnu/libpython3.6m.so <br />
 source ./devel/setup.bash <br />
 pip3 install netifaces <br />
+pip3 install rospkg <br />
 
 followed all instructions from this link https://answers.ros.org/question/326226/importerror-dynamic-module-does-not-define-module-export-function-pyinit__tf2/
 
