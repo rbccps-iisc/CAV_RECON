@@ -13,11 +13,10 @@ It can also be configured(using config.ini) to run only one of the two models.A 
 python3 homo_objnew.py
 
 **Dependencies-**  
-Torch>1.2.0  
+pip3 install -r requirements.txt
 cuda=10.2  
 cudnn=7.6  
-python-opencv-4.5  
-numpy  
+  
 
 The code is tested on gtx 1060.The weights can be dwonloaded from this link-
 Object detection - https://drive.google.com/file/d/1NJ2FfGzhOCx-IXJu9VyKz6a2MN3Kq04-/view?usp=sharing
