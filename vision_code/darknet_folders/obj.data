@@ -1,7 +1,0 @@
-classes= 8
-#train  = ./train.txt
-#valid  = ./val.txt
-valid=./test.txt
-#difficult = data/difficult_2007_test.txt
-names = ./obj.names
-backup = ./backup/
