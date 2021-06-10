@@ -8,16 +8,16 @@
 
 The entire pipeline(comprising of object detection,lidar based distance estimation and segmentation-based goal point generation) **runs at 10fps on a gtx 1060** laptop for a VGA image input.The pipeline can be configured,using the config.ini file. <br />
 
-**Usage**
-
-**case 1- If ROS=0 in config.ini** <br />
-python3 homo_objnew_lidar_live.py <br />
-
 **Dependencies-** <br />
 pip3 install -r requirements.txt  
 The setup works with-
 cuda=10.2 <br />
 cudnn=7.6 <br />
+
+**Usage**
+
+**case 1- If ROS=0 in config.ini** <br />
+python3 homo_objnew_lidar_live.py <br />
 
 
 **Case2-if ROS=1 in config.ini**
